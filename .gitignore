@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Excepciones para Ayuda_Seguridad
+!asis22k24proy2/Codigo/Componentes/Seguridad/EjecucionSeguridad/EjecucionSeguridad/bin/Debug/Ayuda_Seguridad/
+!asis22k24proy2/Codigo/Componentes/Seguridad/Ayuda_Seguridad/
+
