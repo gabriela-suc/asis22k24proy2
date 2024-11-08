@@ -322,6 +322,8 @@ namespace Capa_Vista_Nominas
 
         private void Btn_procliquidaciones_Click(object sender, EventArgs e)
         {
+            AbrirFormulario<Capa_Vista_Liquidaciones.Frm_calcular_liquidacion>();
+            Btn_puesto.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
 
