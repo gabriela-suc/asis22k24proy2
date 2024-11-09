@@ -21,7 +21,7 @@ namespace Capa_Vista_Nominas
             string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.CadetBlue);
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_puestos_trabajo");
             navegador1.ObtenerIdAplicacion("1000");

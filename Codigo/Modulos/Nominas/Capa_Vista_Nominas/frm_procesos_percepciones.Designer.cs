@@ -378,7 +378,7 @@ namespace Capa_Vista_Nominas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CadetBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(171)))), ((int)(((byte)(214)))));
             this.ClientSize = new System.Drawing.Size(1062, 675);
             this.Controls.Add(this.Cbo_clase);
             this.Controls.Add(this.Lbl_clase);
