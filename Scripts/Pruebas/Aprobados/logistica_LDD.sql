@@ -7,6 +7,8 @@ CREATE TABLE Tbl_chofer (
     telefono VARCHAR(15) NOT NULL,
     direccion VARCHAR(255)
   );
+ALTER TABLE Tbl_chofer
+ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
   
 CREATE TABLE Tbl_vehiculos (
     Pk_id_vehiculo INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -31,6 +33,8 @@ CREATE TABLE Tbl_remitente (
     telefono VARCHAR(15) NOT NULL,
     correoElectronico VARCHAR(100)
 );
+ALTER TABLE Tbl_remitente
+ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE Tbl_destinatario (
     Pk_id_destinatario INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,6 +43,8 @@ CREATE TABLE Tbl_destinatario (
     telefono VARCHAR(15) NOT NULL,
     correoElectronico VARCHAR(100)
 );
+ALTER TABLE Tbl_destinatario
+ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
  
 CREATE TABLE Tbl_datos_pedido (
     Pk_id_guia INT AUTO_INCREMENT PRIMARY KEY,
@@ -74,7 +80,17 @@ ADD COLUMN empaque VARCHAR(50) NOT NULL;
 ALTER TABLE Tbl_Productos
 CHANGE COLUMN medidaProducto pesoProducto VARCHAR(20);
 ALTER TABLE Tbl_Productos
+ADD COLUMN comisionInventario DOUBLE NOT NULL;
+ALTER TABLE Tbl_Productos
+ADD COLUMN comisionCosto DOUBLE NOT NULL;
+ALTER TABLE Tbl_Productos
 MODIFY estado TINYINT NOT NULL DEFAULT 1;
+ALTER TABLE tbl_productos ADD CONSTRAINT UQ_codigoProducto UNIQUE
+(codigoProducto);
+ALTER TABLE Tbl_Productos
+ADD COLUMN precio_venta DECIMAL(10, 2) AFTER precioUnitario,
+ADD COLUMN costo_compra DECIMAL(10, 2) AFTER precio_venta;
+
 
 CREATE TABLE Tbl_TrasladoProductos (
     Pk_id_TrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
@@ -92,6 +108,14 @@ CREATE TABLE Tbl_TrasladoProductos (
 
 ALTER TABLE Tbl_TrasladoProductos
 DROP COLUMN cantidad;
+ALTER TABLE Tbl_TrasladoProductos
+MODIFY costoTotal INT NOT NULL;
+ALTER TABLE Tbl_TrasladoProductos
+MODIFY costoTotalGeneral INT NOT NULL;
+ALTER TABLE Tbl_TrasladoProductos
+MODIFY precioTotal INT NOT NULL;
+ALTER TABLE Tbl_TrasladoProductos
+ADD COLUMN codigoProducto INT NOT NULL;
 
 drop table if exists TBL_LOCALES;
 CREATE TABLE TBL_LOCALES (
@@ -104,19 +128,8 @@ CREATE TABLE TBL_LOCALES (
 );
 ALTER TABLE TBL_LOCALES
 MODIFY ESTADO TINYINT NOT NULL DEFAULT 1;
-
-CREATE TABLE Tbl_movimiento_de_inventario (
-	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
-    estado TINYINT NOT NULL DEFAULT 1,
-    Fk_id_producto INT NOT NULL,
-    Fk_id_stock INT NOT NULL,
-    Fk_ID_LOCALES INT NOT NULL,
-    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
-    FOREIGN KEY (Fk_id_stock) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
-    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_LOCALES) REFERENCES TBL_LOCALES(Pk_ID_LOCAL)
-);
-ALTER TABLE Tbl_movimiento_de_inventario
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
+ALTER TABLE TBL_LOCALES
+MODIFY FECHA_REGISTRO DATE NOT NULL;
 
 CREATE TABLE Tbl_mantenimiento (
 	Pk_id_Mantenimiento INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -131,6 +144,19 @@ CREATE TABLE Tbl_mantenimiento (
 	Fk_id_vehiculo INT NOT NULL,
     FOREIGN KEY (Fk_id_vehiculo) REFERENCES Tbl_vehiculos(Pk_id_vehiculo)
 );
+
+CREATE TABLE Tbl_movimiento_de_inventario (
+	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
+    estado TINYINT NOT NULL DEFAULT 1,
+    Fk_id_producto INT NOT NULL,
+    Fk_id_stock INT NOT NULL,
+    Fk_ID_LOCALES INT NOT NULL,
+    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
+    FOREIGN KEY (Fk_id_stock) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
+    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_LOCALES) REFERENCES TBL_LOCALES(Pk_ID_LOCAL)
+);
+ALTER TABLE Tbl_movimiento_de_inventario
+MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE TBL_BODEGAS (
  Pk_ID_BODEGA INT AUTO_INCREMENT PRIMARY KEY,
@@ -175,6 +201,8 @@ CREATE TABLE Tbl_Marca (
 );
 ALTER TABLE Tbl_Marca
 MODIFY estado TINYINT NOT NULL DEFAULT 1;
+ALTER TABLE Tbl_Marca
+ADD COLUMN comision DOUBLE NOT NULL;
 
 CREATE TABLE Tbl_Linea(
 	Pk_id_linea INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -185,4 +213,14 @@ CREATE TABLE Tbl_Linea(
 );
 ALTER TABLE Tbl_Linea
 MODIFY estado TINYINT NOT NULL DEFAULT 1;
+ALTER TABLE Tbl_Linea
+ADD COLUMN comision DOUBLE NOT NULL;
+
+-- ALTER DE PARTE DEL MODULO DE LOGÍSTICA ACEPTADO POR BRANDON BOCH 05-11-2024
+ALTER TABLE Tbl_Productos
+ADD COLUMN precio_venta DECIMAL(10, 2) AFTER precioUnitario,
+ADD COLUMN costo_compra DECIMAL(10, 2) AFTER precio_venta;
+
+ALTER TABLE TBL_LOCALES
+MODIFY FECHA_REGISTRO DATE NOT NULL;
  
