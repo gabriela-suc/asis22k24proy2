@@ -47,7 +47,7 @@ namespace Capa_Vista_JDSC
             // 
             this.Txt_IDAuditoria.Location = new System.Drawing.Point(125, 53);
             this.Txt_IDAuditoria.Name = "Txt_IDAuditoria";
-            this.Txt_IDAuditoria.Size = new System.Drawing.Size(47, 20);
+            this.Txt_IDAuditoria.Size = new System.Drawing.Size(47, 26);
             this.Txt_IDAuditoria.TabIndex = 0;
             // 
             // Btn_GenerarReporte
@@ -67,9 +67,9 @@ namespace Capa_Vista_JDSC
             // LBL_IDAuditoria
             // 
             this.LBL_IDAuditoria.AutoSize = true;
-            this.LBL_IDAuditoria.Location = new System.Drawing.Point(54, 56);
+            this.LBL_IDAuditoria.Location = new System.Drawing.Point(32, 56);
             this.LBL_IDAuditoria.Name = "LBL_IDAuditoria";
-            this.LBL_IDAuditoria.Size = new System.Drawing.Size(65, 13);
+            this.LBL_IDAuditoria.Size = new System.Drawing.Size(87, 19);
             this.LBL_IDAuditoria.TabIndex = 2;
             this.LBL_IDAuditoria.Text = "ID Auditoria:";
             // 
@@ -78,6 +78,7 @@ namespace Capa_Vista_JDSC
             this.groupBox1.Controls.Add(this.Btn_GenerarReporte);
             this.groupBox1.Controls.Add(this.LBL_IDAuditoria);
             this.groupBox1.Controls.Add(this.Txt_IDAuditoria);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(35, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(286, 127);
@@ -88,9 +89,10 @@ namespace Capa_Vista_JDSC
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Btn_ReporteGeneral);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(334, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(162, 127);
+            this.groupBox2.Size = new System.Drawing.Size(264, 127);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Generar Reporte General de Auditoria";
@@ -102,7 +104,7 @@ namespace Capa_Vista_JDSC
             this.Btn_ReporteGeneral.FlatAppearance.BorderSize = 0;
             this.Btn_ReporteGeneral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_ReporteGeneral.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ReporteGeneral.Image")));
-            this.Btn_ReporteGeneral.Location = new System.Drawing.Point(63, 22);
+            this.Btn_ReporteGeneral.Location = new System.Drawing.Point(90, 25);
             this.Btn_ReporteGeneral.Name = "Btn_ReporteGeneral";
             this.Btn_ReporteGeneral.Size = new System.Drawing.Size(93, 81);
             this.Btn_ReporteGeneral.TabIndex = 1;
@@ -114,8 +116,8 @@ namespace Capa_Vista_JDSC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(223)))), ((int)(((byte)(200)))));
-            this.ClientSize = new System.Drawing.Size(516, 180);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(635, 180);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Reporte_Auditoria";

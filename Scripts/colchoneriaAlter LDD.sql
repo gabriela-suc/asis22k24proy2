@@ -201,15 +201,19 @@ CHANGE COLUMN pado_estado estado TINYINT DEFAULT 1 NOT NULL;
 
 -- TBL_Deudas_Clientes
 ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN transaccion_tipo INT NOT NULL;
+ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
 ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN Fk_id_tranC INT NOT NULL,
-ADD CONSTRAINT fk_id_tranC FOREIGN KEY (Fk_id_tranC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
+ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
 
 ALTER TABLE Tbl_Deudas_Clientes
 ADD COLUMN Fk_id_factura INT NOT NULL,
 ADD CONSTRAINT fk_id_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
+
+ALTER TABLE Tbl_Deudas_Clientes 
+DROP FOREIGN KEY tbl_deudas_clientes_ibfk_3;
+ALTER TABLE Tbl_Deudas_Clientes 
+DROP COLUMN Fk_id_pago;
 
 -- TBL_Transaccion_clientes
 ALTER TABLE Tbl_Transaccion_cliente
@@ -219,10 +223,18 @@ ADD COLUMN Fk_id_transC INT NOT NULL,
 ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
 ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
+-- Eliminar llaves foráneas 
+ALTER TABLE Tbl_Transaccion_cliente 
+DROP FOREIGN KEY tbl_transaccion_cliente_ibfk_3, 
+DROP FOREIGN KEY tbl_transaccion_cliente_ibfk_2;
+
+-- Eliminar columnas innecesarias
 ALTER TABLE Tbl_Transaccion_cliente
 DROP COLUMN transaccion_cuotas, 
-DROP COLUMN tansaccion_cuenta;
-ALTER TABLE Tbl_Transaccion_cliente DROP FOREIGN KEY tbl_transaccion_cliente_ibfk_3;
+DROP COLUMN tansaccion_cuenta,
+DROP COLUMN Fk_id_pais,
+DROP COLUMN Fk_id_pago,
+DROP COLUMN transaccionserie;
 
 -- TBL_mora_clientes
 ALTER TABLE Tbl_mora_clientes MODIFY COLUMN morafecha VARCHAR(15) NOT NULL;
@@ -239,29 +251,41 @@ DROP COLUMN caja_mora_monto,
 DROP COLUMN caja_transaccion_monto;
 
 -- TBL_Deuda_Proveedores
-ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_inicio VARCHAR(15) NOT NULL;
-ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_vencimiento VARCHAR(15) NOT NULL;
-
-ALTER TABLE Tbl_Deudas_Proveedores 
-ADD COLUMN Fk_id_tranC INT NOT NULL,  
-ADD CONSTRAINT fk_transaccion_cuentas FOREIGN KEY (Fk_id_tranC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue), 
-ADD COLUMN transaccion_tipo INT NOT NULL, 
-ADD COLUMN Fk_id_factura INT NOT NULL,  
-ADD CONSTRAINT fk_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
-
--- TBL_Transaccion_proveedor
-ALTER TABLE Tbl_Transaccion_proveedor 
-ADD COLUMN Fk_id_factura INT NOT NULL,  
-ADD CONSTRAINT fk_factura_trans_prov FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura), 
-ADD COLUMN Fk_id_transC INT NOT NULL,  
-ADD CONSTRAINT fk_transC_trans_prov FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue), 
+ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_inicio VARCHAR(150) NOT NULL;
+ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_vencimiento VARCHAR(150) NOT NULL;
+ALTER TABLE Tbl_Deudas_Proveedores
 ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
-ALTER TABLE Tbl_Transaccion_proveedor
-DROP COLUMN tansaccion_cuenta, 
-DROP COLUMN tansaccion_cuotas;
+ALTER TABLE Tbl_Deudas_Proveedores
+ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
 
-ALTER TABLE Tbl_Transaccion_proveedor DROP FOREIGN KEY tbl_transaccion_proveedor_ibfk_3;
+ALTER TABLE Tbl_Deudas_Proveedores
+ADD COLUMN Fk_id_factura INT NOT NULL,
+ADD CONSTRAINT fk_id_factura2 FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
+
+ALTER TABLE Tbl_Deudas_Proveedores 
+DROP FOREIGN KEY tbl_deudas_proveedores_ibfk_2;
+ALTER TABLE Tbl_Deudas_Proveedores
+DROP COLUMN Fk_id_pago;
+
+-- TBL_Transaccion_proveedor
+ALTER TABLE Tbl_Transaccion_proveedor
+ADD COLUMN Fk_id_transC INT NOT NULL,
+ADD CONSTRAINT fk_transC_trans_proveedor FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
+ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+
+-- Eliminar llaves foráneas 
+ALTER TABLE Tbl_Transaccion_proveedor 
+DROP FOREIGN KEY tbl_transaccion_proveedor_ibfk_3, 
+DROP FOREIGN KEY tbl_transaccion_proveedor_ibfk_2;
+
+-- Eliminar columnas innecesarias
+ALTER TABLE Tbl_Transaccion_proveedor
+DROP COLUMN tansaccion_cuotas, 
+DROP COLUMN tansaccion_cuenta,
+DROP COLUMN Fk_id_pais,
+DROP COLUMN Fk_id_pago,
+DROP COLUMN transaccion_serie;
 
 -- TBL_caja_proveedor
 
@@ -295,6 +319,7 @@ ALTER TABLE TBL_LOCALES
 MODIFY FECHA_REGISTRO DATE NOT NULL;
 
 -- ALTER MODULO COMERCIAL 06/11/2024
+
 CREATE TABLE Tbl_clasificacionLista (
     pk_id_clasificacion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_clasificacion VARCHAR(50) NOT NULL,  
@@ -537,3 +562,47 @@ CREATE TABLE IF NOT EXISTS Tbl_DetalleOrdenesCompra (
     FOREIGN KEY (FK_codigoProducto) REFERENCES Tbl_Productos(codigoProducto),
     PRIMARY KEY ( FK_encOrCom_numeroOC, FK_codigoProducto)
 );
+
+
+
+-- CREACION DE TABLAS DEL MODULO DE PRODUCCION  06/11/2024
+CREATE TABLE IF NOT EXISTS tbl_implosion ( 
+    pk_id_implosion INT(11) NOT NULL AUTO_INCREMENT,
+    fk_id_orden INT(11) DEFAULT NULL, -- Relacionado con la orden de producción
+    fk_id_producto_final INT(11) DEFAULT NULL, -- Producto final que se construye
+    id_componente VARCHAR(50) DEFAULT NULL, -- Componente utilizado en la consolidación, ahora como string
+    cantidad_componente INT(11) DEFAULT NULL, -- Cantidad de cada componente
+    costo_componente INT(11) DEFAULT NULL, -- Costo de cada componente
+    duracion_horas INT(11) DEFAULT NULL, -- Duración en horas para consolidar el componente
+    fk_id_proceso INT(11) DEFAULT NULL, -- Relación con el proceso de producción
+    fecha_implosion DATETIME DEFAULT NULL, -- Fecha de la implosión
+    PRIMARY KEY (pk_id_implosion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS tbl_explosion (
+pk_id_explosion INT(11) NOT NULL AUTO_INCREMENT,
+fk_id_orden INT(11) DEFAULT NULL, -- Relacionado con la orden de producción
+fk_id_producto INT(11) DEFAULT NULL, -- Producto que se descompone
+cantidad INT(11) DEFAULT NULL, -- Cantidad de producto a descomponer
+costo_total DECIMAL(10,2) DEFAULT NULL, -- Costo total de la descomposición
+duracion_horas INT(11) DEFAULT NULL, -- Duración en horas
+fk_id_proceso INT(11) DEFAULT NULL, -- Relación con el proceso
+fecha_explosion DATE DEFAULT NULL, -- Fecha de la explosión
+PRIMARY KEY (pk_id_explosion),
+FOREIGN KEY (fk_id_producto) REFERENCES tbl_productos(pk_id_producto),
+FOREIGN KEY (fk_id_proceso) REFERENCES tbl_proceso_produccion_encabezado(pk_id_proceso)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- CUENTAS CORRIENTES 07/11/2024
+
+DROP TABLE Tbl_paises;
+Drop table Tbl_Formadepago;
+
+-- PRODUCCION 08/11/024
+ALTER TABLE tbl_recetas
+ADD COLUMN `dias` INT(11) NULL,
+ADD COLUMN `horas` DECIMAL(10,2) NULL;
+
+
+

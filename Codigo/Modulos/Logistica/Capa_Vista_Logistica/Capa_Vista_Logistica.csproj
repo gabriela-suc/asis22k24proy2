@@ -35,6 +35,10 @@
     <Reference Include="Capa_Controlador_Logistica">
       <HintPath>..\Capa_Controlador_Logistica\bin\Debug\Capa_Controlador_Logistica.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Backup\asis22k24proy2\Codigo\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_AmmyCatun">
       <HintPath>..\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
     </Reference>
@@ -102,18 +106,6 @@
     <Compile Include="MarcaNav.Designer.cs">
       <DependentUpon>MarcaNav.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantenimientoNav.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MantenimientoNav.Designer.cs">
-      <DependentUpon>MantenimientoNav.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimientos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimientos.Designer.cs">
-      <DependentUpon>Movimientos.cs</DependentUpon>
-    </Compile>
     <Compile Include="EnlaceContabilidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,12 +140,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MarcaNav.resx">
       <DependentUpon>MarcaNav.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoNav.resx">
-      <DependentUpon>MantenimientoNav.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimientos.resx">
-      <DependentUpon>Movimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnlaceContabilidad.resx">
       <DependentUpon>EnlaceContabilidad.cs</DependentUpon>
@@ -201,6 +187,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Quitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahorrar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preguntas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2024-11-04_21-54-12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verificado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reporte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preguntas_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
