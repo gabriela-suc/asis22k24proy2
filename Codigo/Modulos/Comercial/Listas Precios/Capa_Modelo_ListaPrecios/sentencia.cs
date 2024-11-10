@@ -360,7 +360,7 @@ namespace Capa_Modelo_ListaPrecios
         //filtros de busqueda
         public OdbcDataAdapter funmostarEncabezadosPorEstado(string sestado)
         {
-            string sencabezado = "SELECT le.Pk_id_lista_Encabezado AS 'Codigo de Lista', " +
+            string sencabezado = "SELECT le.Pk_id_lista_Encabezado AS 'Codigo Lista', " +
                                  "c.nombre_clasificacion AS 'Para', " +
                                  "le.ListEncabezado_fecha AS 'Fecha de Creacion', " +
                                  "le.estado AS 'Estado' " +
@@ -381,7 +381,7 @@ namespace Capa_Modelo_ListaPrecios
 
         public OdbcDataAdapter funmostarEncabezadosPorTipo(string stipoLista)
         {
-            string sencabezado = "SELECT le.Pk_id_lista_Encabezado AS 'Codigo de Lista', " +
+            string sencabezado = "SELECT le.Pk_id_lista_Encabezado AS 'Codigo Lista', " +
                                  "c.nombre_clasificacion AS 'Para', " +
                                  "le.ListEncabezado_fecha AS 'Fecha de Creacion', " +
                                  "le.estado AS 'Estado' " +

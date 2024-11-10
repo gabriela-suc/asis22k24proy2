@@ -39,7 +39,7 @@ namespace Capa_Vista_ListaPrecios
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Lbl_identificacion = new System.Windows.Forms.Label();
             this.Dgv_detalleProductos = new System.Windows.Forms.DataGridView();
             this.Gbp_datos2 = new System.Windows.Forms.GroupBox();
             this.Dgv_seleccionados = new System.Windows.Forms.DataGridView();
@@ -47,14 +47,15 @@ namespace Capa_Vista_ListaPrecios
             this.Txt_aplicar = new System.Windows.Forms.Label();
             this.Txt_porcentaje = new System.Windows.Forms.TextBox();
             this.Txt_descuento = new System.Windows.Forms.Label();
+            this.Txt_forzado = new System.Windows.Forms.TextBox();
             this.Rdb_forzar = new System.Windows.Forms.RadioButton();
             this.Rdb_precioventa = new System.Windows.Forms.RadioButton();
             this.Rdb_costocompra = new System.Windows.Forms.RadioButton();
             this.Btn_aplicar = new System.Windows.Forms.Button();
             this.Txt_precioforzado = new System.Windows.Forms.Label();
             this.Gpb_filtros = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Lbl_especifico = new System.Windows.Forms.Label();
+            this.Lbl_clasificaciones = new System.Windows.Forms.Label();
             this.Txt_inventario = new System.Windows.Forms.Label();
             this.Txt_busqueda = new System.Windows.Forms.Label();
             this.Cbo_clasificacionEspecifica = new System.Windows.Forms.ComboBox();
@@ -73,7 +74,6 @@ namespace Capa_Vista_ListaPrecios
             this.Btn_crear = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Btn_aceptar = new System.Windows.Forms.Button();
-            this.Txt_forzado = new System.Windows.Forms.TextBox();
             this.Gpb_listaEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_detalleProductos)).BeginInit();
             this.Gbp_datos2.SuspendLayout();
@@ -96,7 +96,7 @@ namespace Capa_Vista_ListaPrecios
             this.Gpb_listaEncabezado.Controls.Add(this.label7);
             this.Gpb_listaEncabezado.Controls.Add(this.label8);
             this.Gpb_listaEncabezado.Controls.Add(this.label10);
-            this.Gpb_listaEncabezado.Controls.Add(this.label5);
+            this.Gpb_listaEncabezado.Controls.Add(this.Lbl_identificacion);
             this.Gpb_listaEncabezado.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.Gpb_listaEncabezado.Location = new System.Drawing.Point(51, 59);
             this.Gpb_listaEncabezado.Margin = new System.Windows.Forms.Padding(4);
@@ -185,16 +185,16 @@ namespace Capa_Vista_ListaPrecios
             this.label10.TabIndex = 340;
             this.label10.Text = "Código:";
             // 
-            // label5
+            // Lbl_identificacion
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(28, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 11);
-            this.label5.TabIndex = 338;
-            this.label5.Text = "Selección del Nombre de la Lista";
+            this.Lbl_identificacion.AutoSize = true;
+            this.Lbl_identificacion.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_identificacion.ForeColor = System.Drawing.Color.Blue;
+            this.Lbl_identificacion.Location = new System.Drawing.Point(28, 23);
+            this.Lbl_identificacion.Name = "Lbl_identificacion";
+            this.Lbl_identificacion.Size = new System.Drawing.Size(154, 11);
+            this.Lbl_identificacion.TabIndex = 338;
+            this.Lbl_identificacion.Text = "Selección del Nombre de la Lista";
             // 
             // Dgv_detalleProductos
             // 
@@ -283,6 +283,14 @@ namespace Capa_Vista_ListaPrecios
             this.Txt_descuento.TabIndex = 316;
             this.Txt_descuento.Text = "Ingreso Opcional (Entero)";
             // 
+            // Txt_forzado
+            // 
+            this.Txt_forzado.Location = new System.Drawing.Point(128, 120);
+            this.Txt_forzado.Name = "Txt_forzado";
+            this.Txt_forzado.Size = new System.Drawing.Size(93, 18);
+            this.Txt_forzado.TabIndex = 314;
+            this.Txt_forzado.TextChanged += new System.EventHandler(this.Txt_forzado_TextChanged);
+            // 
             // Rdb_forzar
             // 
             this.Rdb_forzar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -359,8 +367,8 @@ namespace Capa_Vista_ListaPrecios
             this.Gpb_filtros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Gpb_filtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(137)))));
             this.Gpb_filtros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Gpb_filtros.Controls.Add(this.label3);
-            this.Gpb_filtros.Controls.Add(this.label2);
+            this.Gpb_filtros.Controls.Add(this.Lbl_especifico);
+            this.Gpb_filtros.Controls.Add(this.Lbl_clasificaciones);
             this.Gpb_filtros.Controls.Add(this.Txt_inventario);
             this.Gpb_filtros.Controls.Add(this.Txt_busqueda);
             this.Gpb_filtros.Controls.Add(this.Cbo_clasificacionEspecifica);
@@ -380,27 +388,27 @@ namespace Capa_Vista_ListaPrecios
             this.Gpb_filtros.TabStop = false;
             this.Gpb_filtros.Text = "2. Filtros de búsqueda";
             // 
-            // label3
+            // Lbl_especifico
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(29, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 11);
-            this.label3.TabIndex = 337;
-            this.label3.Text = "Selección por producto específico";
+            this.Lbl_especifico.AutoSize = true;
+            this.Lbl_especifico.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_especifico.ForeColor = System.Drawing.Color.Blue;
+            this.Lbl_especifico.Location = new System.Drawing.Point(29, 78);
+            this.Lbl_especifico.Name = "Lbl_especifico";
+            this.Lbl_especifico.Size = new System.Drawing.Size(161, 11);
+            this.Lbl_especifico.TabIndex = 337;
+            this.Lbl_especifico.Text = "Selección por producto específico";
             // 
-            // label2
+            // Lbl_clasificaciones
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(27, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 11);
-            this.label2.TabIndex = 318;
-            this.label2.Text = "Selección de productos por clasificaciones";
+            this.Lbl_clasificaciones.AutoSize = true;
+            this.Lbl_clasificaciones.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_clasificaciones.ForeColor = System.Drawing.Color.Blue;
+            this.Lbl_clasificaciones.Location = new System.Drawing.Point(27, 25);
+            this.Lbl_clasificaciones.Name = "Lbl_clasificaciones";
+            this.Lbl_clasificaciones.Size = new System.Drawing.Size(201, 11);
+            this.Lbl_clasificaciones.TabIndex = 318;
+            this.Lbl_clasificaciones.Text = "Selección de productos por clasificaciones";
             // 
             // Txt_inventario
             // 
@@ -603,14 +611,6 @@ namespace Capa_Vista_ListaPrecios
             this.Btn_aceptar.UseVisualStyleBackColor = true;
             this.Btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
             // 
-            // Txt_forzado
-            // 
-            this.Txt_forzado.Location = new System.Drawing.Point(128, 120);
-            this.Txt_forzado.Name = "Txt_forzado";
-            this.Txt_forzado.Size = new System.Drawing.Size(93, 18);
-            this.Txt_forzado.TabIndex = 314;
-            this.Txt_forzado.TextChanged += new System.EventHandler(this.Txt_forzado_TextChanged);
-            // 
             // frm_ListadoPrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,6 +630,7 @@ namespace Capa_Vista_ListaPrecios
             this.Controls.Add(this.Dgv_detalleProductos);
             this.Controls.Add(this.Gbp_datos2);
             this.Controls.Add(this.Gpb_filtros);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_ListadoPrecios";
             this.Text = "Creación de Listas";
             this.Load += new System.EventHandler(this.frm_ListadoPrecios_Load);
@@ -658,7 +659,7 @@ namespace Capa_Vista_ListaPrecios
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Lbl_identificacion;
         private System.Windows.Forms.ComboBox Cbo_tipoLista;
         private System.Windows.Forms.Button Btn_cancelar;
         private System.Windows.Forms.Button Btn_aceptar;
@@ -674,8 +675,8 @@ namespace Capa_Vista_ListaPrecios
         private System.Windows.Forms.RadioButton Rdb_costocompra;
         private System.Windows.Forms.Label Txt_precioforzado;
         private System.Windows.Forms.GroupBox Gpb_filtros;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Lbl_especifico;
+        private System.Windows.Forms.Label Lbl_clasificaciones;
         private System.Windows.Forms.Label Txt_inventario;
         private System.Windows.Forms.TextBox Txt_clasificacionEspecificaSeleccionada;
         private System.Windows.Forms.Label Txt_busqueda;

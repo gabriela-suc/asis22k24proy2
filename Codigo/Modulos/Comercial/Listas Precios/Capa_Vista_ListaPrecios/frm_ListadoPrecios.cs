@@ -538,10 +538,25 @@ namespace Capa_Vista_ListaPrecios
             dtCombinado.Columns.Add("Precio de Lista", typeof(decimal));
 
             // Obtener valores del encabezado del formulario
-            int iCodigo = int.Parse(Txt_codigo.Text);
-            string sClasificacion = Cbo_tipoLista.Text;
-            string sEstado = Cbo_estado.SelectedItem.ToString();
-            string sFecha = Txt_fecha.Text;
+            int iCodigo = 0;
+            string sClasificacion = string.Empty;
+            string sEstado = string.Empty;
+            string sFecha = string.Empty;
+
+            // Verificar si los campos del encabezado están llenos
+            if (string.IsNullOrWhiteSpace(Txt_codigo.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_tipoLista.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_estado.SelectedItem?.ToString()) ||
+                string.IsNullOrWhiteSpace(Txt_fecha.Text))
+            {
+                MessageBox.Show("Debe llenar todos los campos del encabezado: Código, Tipo de Lista, Estado, Fecha.");
+                return;
+            }
+
+            iCodigo = int.Parse(Txt_codigo.Text);
+            sClasificacion = Cbo_tipoLista.Text;
+            sEstado = Cbo_estado.SelectedItem.ToString();
+            sFecha = Txt_fecha.Text;
 
             // Verificar que haya datos en Dgv_seleccionados
             if (Dgv_seleccionados.DataSource != null)

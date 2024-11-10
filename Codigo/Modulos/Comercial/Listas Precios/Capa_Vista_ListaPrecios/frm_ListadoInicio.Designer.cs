@@ -29,6 +29,7 @@ namespace Capa_Vista_ListaPrecios
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_ListadoInicio));
             this.Txt_titulo = new System.Windows.Forms.Label();
             this.Dgv_listado = new System.Windows.Forms.DataGridView();
             this.Cbo_estado = new System.Windows.Forms.ComboBox();
@@ -194,6 +195,7 @@ namespace Capa_Vista_ListaPrecios
             this.Controls.Add(this.Btn_eliminarLista);
             this.Controls.Add(this.Btn_crearLista);
             this.Controls.Add(this.Txt_titulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_ListadoInicio";
             this.Text = "Listas de Precios";
             this.Load += new System.EventHandler(this.frm_ListadoDetalle_Load);
