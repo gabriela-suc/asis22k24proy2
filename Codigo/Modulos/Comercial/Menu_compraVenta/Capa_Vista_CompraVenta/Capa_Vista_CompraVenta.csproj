@@ -37,8 +37,14 @@
     <Reference Include="Capa_Vista_Cotizacion">
       <HintPath>..\..\Cotizacion\Capa_Vista_Cotizacion\bin\Debug\Capa_Vista_Cotizacion.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_ListaPrecios">
+      <HintPath>..\..\Listas Precios\Capa_Vista_ListaPrecios\bin\Debug\Capa_Vista_ListaPrecios.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Interfac_V3">
+      <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
