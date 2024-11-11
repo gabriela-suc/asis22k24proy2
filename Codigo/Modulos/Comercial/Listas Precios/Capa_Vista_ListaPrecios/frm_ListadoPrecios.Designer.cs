@@ -46,7 +46,6 @@ namespace Capa_Vista_ListaPrecios
             this.Gpb_modo = new System.Windows.Forms.GroupBox();
             this.Txt_aplicar = new System.Windows.Forms.Label();
             this.Txt_porcentaje = new System.Windows.Forms.TextBox();
-            this.Txt_descuento = new System.Windows.Forms.Label();
             this.Txt_forzado = new System.Windows.Forms.TextBox();
             this.Rdb_forzar = new System.Windows.Forms.RadioButton();
             this.Rdb_precioventa = new System.Windows.Forms.RadioButton();
@@ -238,7 +237,6 @@ namespace Capa_Vista_ListaPrecios
             this.Gpb_modo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Gpb_modo.Controls.Add(this.Txt_aplicar);
             this.Gpb_modo.Controls.Add(this.Txt_porcentaje);
-            this.Gpb_modo.Controls.Add(this.Txt_descuento);
             this.Gpb_modo.Controls.Add(this.Txt_forzado);
             this.Gpb_modo.Controls.Add(this.Rdb_forzar);
             this.Gpb_modo.Controls.Add(this.Rdb_precioventa);
@@ -271,17 +269,6 @@ namespace Capa_Vista_ListaPrecios
             this.Txt_porcentaje.Size = new System.Drawing.Size(121, 18);
             this.Txt_porcentaje.TabIndex = 315;
             this.Txt_porcentaje.TextChanged += new System.EventHandler(this.Txt_porcentaje_TextChanged);
-            // 
-            // Txt_descuento
-            // 
-            this.Txt_descuento.AutoSize = true;
-            this.Txt_descuento.Font = new System.Drawing.Font("Arial Narrow", 6.5F, System.Drawing.FontStyle.Bold);
-            this.Txt_descuento.ForeColor = System.Drawing.Color.Red;
-            this.Txt_descuento.Location = new System.Drawing.Point(368, 44);
-            this.Txt_descuento.Name = "Txt_descuento";
-            this.Txt_descuento.Size = new System.Drawing.Size(103, 13);
-            this.Txt_descuento.TabIndex = 316;
-            this.Txt_descuento.Text = "Ingreso Opcional (Entero)";
             // 
             // Txt_forzado
             // 
@@ -669,7 +656,6 @@ namespace Capa_Vista_ListaPrecios
         private System.Windows.Forms.GroupBox Gpb_modo;
         private System.Windows.Forms.Label Txt_aplicar;
         private System.Windows.Forms.TextBox Txt_porcentaje;
-        private System.Windows.Forms.Label Txt_descuento;
         private System.Windows.Forms.RadioButton Rdb_forzar;
         private System.Windows.Forms.RadioButton Rdb_precioventa;
         private System.Windows.Forms.RadioButton Rdb_costocompra;

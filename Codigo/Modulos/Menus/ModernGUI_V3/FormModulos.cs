@@ -9,10 +9,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Nominas;    --descomentar
+using Capa_Vista_Nominas;    
 
-using Capa_Vista_Banco;      --descomentar
-using Capa_Vista_Contabilidad; --descomentar
+using Capa_Vista_Banco;      
+using Capa_Vista_Contabilidad; 
 //using Capa_Vista_Produccion;
 //using Capa_Vista_Banco;
 using Capa_Vista_CompraVenta;
@@ -110,7 +110,7 @@ namespace Interfac_V3
         private void Btn_Bancos_Click(object sender, EventArgs e)
         {
             // Redirige a Modulo Bancos
-            //frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
+            frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
             banco.Show();
 
         }
