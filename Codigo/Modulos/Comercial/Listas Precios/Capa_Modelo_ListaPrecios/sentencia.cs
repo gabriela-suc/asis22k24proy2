@@ -578,7 +578,7 @@ namespace Capa_Modelo_ListaPrecios
             }
         }
 
-        public OdbcDataAdapter funobtenerEncabezadoYDetalle()
+        /*public OdbcDataAdapter funobtenerEncabezadoYDetalle()
         {
             try
             {
@@ -617,6 +617,6 @@ namespace Capa_Modelo_ListaPrecios
                 MessageBox.Show("Error al obtener los encabezados y detalles: " + ex.Message);
                 return null; // Retorna null si ocurre un error
             }
-        }
+        }*/
     }
 }

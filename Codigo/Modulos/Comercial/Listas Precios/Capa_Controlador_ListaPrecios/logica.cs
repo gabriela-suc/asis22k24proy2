@@ -295,7 +295,7 @@ namespace Capa_Controlador_ListaPrecios
             }
         }
 
-        public DataTable funlogicaactualizarTabla()
+        /*public DataTable funlogicaactualizarTabla()
         {
             try
             {
@@ -309,9 +309,6 @@ namespace Capa_Controlador_ListaPrecios
                 Console.WriteLine("Error al actualizar detalle: " + ex.Message);
                 return null;
             }
-        }
-
-
-
+        }*/
     }
 }

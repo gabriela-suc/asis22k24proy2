@@ -764,7 +764,7 @@ namespace Capa_Vista_ListaPrecios
                     {
                         MessageBox.Show("Datos guardados exitosamente en ambas tablas.");
 
-                        ActualizarDataGrid();
+                        //ActualizarDataGrid();
                         LimpiarFormulario();
                     }
                 }
@@ -779,23 +779,6 @@ namespace Capa_Vista_ListaPrecios
             }
         }
 
-
-        private void ActualizarDataGrid()
-        {
-            // Obtener los datos combinados de encabezado y detalle
-            DataTable listaDetalles = logic.funlogicaactualizarTabla();
-
-           
-            if (listaDetalles != null)
-            {
-             
-                Dgv_combinado.DataSource = listaDetalles;
-            }
-            else
-            {
-                MessageBox.Show("No se pudieron obtener los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void LimpiarFormulario()
         {
@@ -980,6 +963,14 @@ namespace Capa_Vista_ListaPrecios
         {
             // Deshabilitar el campo de texto para que no sea interactuable
             Txt_codigo.Enabled = false;
+            Txt_porcentaje.Enabled = false;
+            Txt_forzado.Enabled = false;
+            Rdb_costocompra.Enabled = false;
+            Rdb_precioventa.Enabled = false;
+            Rdb_forzar.Enabled = false;
+            Btn_aplicar.Enabled = false;
+            Btn_crear.Enabled = false;
+            Btn_cancelarLista.Enabled = false;
 
             try
             {
@@ -1081,6 +1072,12 @@ namespace Capa_Vista_ListaPrecios
             Txt_codigo.Enabled = false;
             Txt_porcentaje.Enabled = false;
             Txt_forzado.Enabled = false;
+            Rdb_costocompra.Enabled = false;
+            Rdb_precioventa.Enabled = false;
+            Rdb_forzar.Enabled = false;
+            Btn_aplicar.Enabled = false;
+            Btn_crear.Enabled = false;
+            Btn_cancelarLista.Enabled = false;
 
             try
             {
@@ -1125,6 +1122,13 @@ namespace Capa_Vista_ListaPrecios
                 Txt_codigo.Enabled = true;
                 Txt_porcentaje.Enabled = true;
                 Txt_forzado.Enabled = true;
+                Rdb_costocompra.Enabled = true;
+                Rdb_precioventa.Enabled = true;
+                Rdb_forzar.Enabled = true;
+                Btn_aplicar.Enabled = true;
+                Btn_crear.Enabled = true;
+                Btn_cancelarLista.Enabled = true;
+
             }
 
         }
