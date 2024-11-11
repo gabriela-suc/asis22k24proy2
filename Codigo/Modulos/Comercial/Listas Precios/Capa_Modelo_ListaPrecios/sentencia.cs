@@ -280,7 +280,7 @@ namespace Capa_Modelo_ListaPrecios
 
                         // Insertar registro en la bitácora
                         var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                        bitacora.funInsertarBitacora(idUsuario, "Inserto un nuevo encabezado de lista: " + iCodigoEncabezado, "Tbl_lista_encabezado", "1000");
+                        bitacora.funInsertarBitacora(idUsuario, "Inserto un nuevo encabezado de lista: " + iCodigoEncabezado, "Tbl_lista_encabezado", "3000");
                     }
                 }
             }
@@ -315,7 +315,7 @@ namespace Capa_Modelo_ListaPrecios
 
                         // Insertar registro en la bitácora
                         var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                        bitacora.funInsertarBitacora(idUsuario, "Inserto Detalle de lista: " + iCodigoEncabezado, "Tbl_lista_detalle", "1000");
+                        bitacora.funInsertarBitacora(idUsuario, "Inserto Detalle de lista: " + iCodigoEncabezado, "Tbl_lista_detalle", "3000");
 
                     }
                 }
@@ -346,7 +346,7 @@ namespace Capa_Modelo_ListaPrecios
 
                 // Insertar registro en la bitácora
                 var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista: ", "Tbl_lista_encabezado", "1000");
+                bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista: ", "Tbl_lista_encabezado", "3000");
 
                 return tableEncabezados; 
             }
@@ -374,7 +374,7 @@ namespace Capa_Modelo_ListaPrecios
 
             // Insertar registro en la bitácora
             var bitacora = new Capa_Modelo_Seguridad.sentencia();
-            bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista por estado: ", "Tbl_lista_encabezado", "1000");
+            bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista por estado: ", "Tbl_lista_encabezado", "3000");
 
             return dataencabezados;
         }
@@ -395,7 +395,7 @@ namespace Capa_Modelo_ListaPrecios
 
             // Insertar registro en la bitácora
             var bitacora = new Capa_Modelo_Seguridad.sentencia();
-            bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista por tipo: ", "Tbl_lista_encabezado", "1000");
+            bitacora.funInsertarBitacora(idUsuario, "Consultó los encabezados de lista por tipo: ", "Tbl_lista_encabezado", "3000");
 
             return dataencabezados;
         }
@@ -408,7 +408,7 @@ namespace Capa_Modelo_ListaPrecios
 
             // Insertar registro en la bitácora
             var bitacora = new Capa_Modelo_Seguridad.sentencia();
-            bitacora.funInsertarBitacora(idUsuario, "Consultó tipos de lista: ", "Tbl_clasificacionLista", "1000");
+            bitacora.funInsertarBitacora(idUsuario, "Consultó tipos de lista: ", "Tbl_clasificacionLista", "3000");
 
             return dataClasificaciones;
         }
@@ -438,7 +438,7 @@ namespace Capa_Modelo_ListaPrecios
                     }
                     // Insertar registro en la bitácora
                     var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                    bitacora.funInsertarBitacora(idUsuario, "Eliminó lista de precios: ", "Tbl_lista_detalle", "1000");
+                    bitacora.funInsertarBitacora(idUsuario, "Eliminó lista de precios: ", "Tbl_lista_detalle", "3000");
                 }
             }
             catch (Exception ex)
@@ -508,7 +508,7 @@ namespace Capa_Modelo_ListaPrecios
 
                 // Insertar registro en la bitácora
                 var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                bitacora.funInsertarBitacora(idUsuario, "Consultó detalle de Lista: ", "Tbl_lista_encabezado", "1000");
+                bitacora.funInsertarBitacora(idUsuario, "Consultó detalle de Lista: ", "Tbl_lista_encabezado", "3000");
             }
             catch (Exception ex)
             {
@@ -545,7 +545,7 @@ namespace Capa_Modelo_ListaPrecios
                     }
                     // Insertar registro en la bitácora
                     var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                    bitacora.funInsertarBitacora(idUsuario, "Actualizó encabezado de Lista: ", "Tbl_lista_encabezado", "1000");
+                    bitacora.funInsertarBitacora(idUsuario, "Actualizó encabezado de Lista: ", "Tbl_lista_encabezado", "3000");
                 }
                 // Si la actualización fue exitosa, retornar
                 return new OdbcDataAdapter("SELECT * FROM Tbl_lista_encabezado WHERE Pk_id_lista_Encabezado = ?", cn.conectar());
@@ -567,7 +567,7 @@ namespace Capa_Modelo_ListaPrecios
 
                 // Insertar registro en la bitácora
                 var bitacora = new Capa_Modelo_Seguridad.sentencia();
-                bitacora.funInsertarBitacora(idUsuario, "Actualizó detalle de Lista: ", "tbl_lista_detalle", "1000");
+                bitacora.funInsertarBitacora(idUsuario, "Actualizó detalle de Lista: ", "tbl_lista_detalle", "3000");
 
                 return dataTable;
             }
@@ -575,6 +575,47 @@ namespace Capa_Modelo_ListaPrecios
             {
                 Console.WriteLine("Error al actualizar detalle: " + ex.Message);
                 return null; // Si hay un error, retorna null
+            }
+        }
+
+        public OdbcDataAdapter funobtenerEncabezadoYDetalle()
+        {
+            try
+            {
+                cn.conectar();
+
+                // Consulta SQL para obtener los datos combinados del encabezado + detalle
+                string query = @"
+            SELECT 
+                e.Pk_id_lista_Encabezado AS 'Codigo Lista',
+                c.nombre_clasificacion AS 'Tipo de Lista',
+                e.ListEncabezado_fecha AS 'Fecha Creacion',
+                e.estado AS 'Estado',
+                c.nombre_clasificacion AS 'Clasificacion Producto',
+                p.subclasificacion AS Subclasificacion,
+                p.nombre_producto AS Producto,
+                d.Fk_id_Producto AS 'Codigo Producto',
+                d.ListDetalle_precio AS 'Precio de Lista'
+            FROM 
+                tbl_lista_encabezado e
+            INNER JOIN 
+                tbl_lista_detalle d ON e.Pk_id_lista_Encabezado = d.Fk_id_lista_Encabezado
+            INNER JOIN 
+                tbl_clasificacion c ON e.Fk_id_clasificacion = c.Pk_id_clasificacion
+            INNER JOIN 
+                tbl_producto p ON d.Fk_id_Producto = p.Pk_id_Producto
+            ORDER BY 
+                e.Pk_id_lista_Encabezado;";
+
+                // Crear un OdbcDataAdapter con la consulta SQL
+                OdbcDataAdapter dataAdapter = new OdbcDataAdapter(query, cn.conectar());
+
+                return dataAdapter;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener los encabezados y detalles: " + ex.Message);
+                return null; // Retorna null si ocurre un error
             }
         }
     }

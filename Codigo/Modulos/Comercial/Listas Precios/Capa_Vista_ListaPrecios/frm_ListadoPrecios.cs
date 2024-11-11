@@ -529,7 +529,7 @@ namespace Capa_Vista_ListaPrecios
             dtCombinado.Columns.Add("Codigo Lista", typeof(int));
             dtCombinado.Columns.Add("Tipo de Lista", typeof(string));
             dtCombinado.Columns.Add("Estado", typeof(string));
-            dtCombinado.Columns.Add("Fecha Creación", typeof(string));
+            dtCombinado.Columns.Add("Fecha Creacion", typeof(string));
             dtCombinado.Columns.Add("Clasificacion Producto", typeof(string));
             dtCombinado.Columns.Add("Subclasificación", typeof(string));
             dtCombinado.Columns.Add("Id", typeof(int));
@@ -571,7 +571,7 @@ namespace Capa_Vista_ListaPrecios
                         productoRow["Codigo Lista"] = iCodigo;
                         productoRow["Tipo de Lista"] = sClasificacion;
                         productoRow["Estado"] = sEstado;
-                        productoRow["Fecha Creación"] = sFecha;
+                        productoRow["Fecha Creacion"] = sFecha;
 
                         // Agregar la información del producto
                         productoRow["Clasificacion Producto"] = row.Cells["Clasificacion"].Value;
@@ -764,6 +764,7 @@ namespace Capa_Vista_ListaPrecios
                     {
                         MessageBox.Show("Datos guardados exitosamente en ambas tablas.");
 
+                        ActualizarDataGrid();
                         LimpiarFormulario();
                     }
                 }
@@ -775,6 +776,24 @@ namespace Capa_Vista_ListaPrecios
             catch (Exception ex)
             {
                 //MessageBox.Show("Error al guardar datos: " + ex.Message);
+            }
+        }
+
+
+        private void ActualizarDataGrid()
+        {
+            // Obtener los datos combinados de encabezado y detalle
+            DataTable listaDetalles = logic.funlogicaactualizarTabla();
+
+           
+            if (listaDetalles != null)
+            {
+             
+                Dgv_combinado.DataSource = listaDetalles;
+            }
+            else
+            {
+                MessageBox.Show("No se pudieron obtener los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

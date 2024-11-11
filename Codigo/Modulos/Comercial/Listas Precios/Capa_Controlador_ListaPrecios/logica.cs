@@ -295,11 +295,11 @@ namespace Capa_Controlador_ListaPrecios
             }
         }
 
-        public DataTable funlogicaactualizarDetalle(int fkIdListaEncabezado, int fkIdProducto, decimal precio)
+        public DataTable funlogicaactualizarTabla()
         {
             try
             {
-                OdbcDataAdapter dataTable = sn.funactualizarDetalle(fkIdListaEncabezado, fkIdProducto, precio);
+                OdbcDataAdapter dataTable = sn.funobtenerEncabezadoYDetalle();
                 DataTable tabledetalle = new DataTable();
                 dataTable.Fill(tabledetalle);
                 return tabledetalle;
@@ -310,6 +310,8 @@ namespace Capa_Controlador_ListaPrecios
                 return null;
             }
         }
+
+
 
     }
 }
